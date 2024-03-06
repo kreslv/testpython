@@ -11,7 +11,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -33,7 +33,7 @@ jobs:
 
     - name: Commit and push
       run: |
-        git config --local user.email "action@github.com"
+        git config --local user.email "krslv@github.com"
         git config --local user.name "GitHub Action"
         git add output.csv
         git commit -m "Update output.csv" && git push
