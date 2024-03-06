@@ -11,10 +11,10 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: 3.8
 
@@ -31,9 +31,10 @@ jobs:
         df.to_csv('output.csv', index=False)
         "
 
-    - name: Commit and push
-      run: |
-        git config --local user.email "krslv@github.com"
-        git config --local user.name "GitHub Action"
-        git add output.csv
-        git commit -m "Update output.csv" && git push
+    - name: Commit changes
+      uses: EndBug/add-and-commit@v9
+      with:
+        author_name: krslv
+        author_email: krslv@example.com
+        message: 'Update ouput message'
+        add: '*.csv'
